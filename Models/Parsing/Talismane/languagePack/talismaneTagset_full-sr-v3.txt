@@ -1,0 +1,20 @@
+# ParCoLab tagset for Serbian. POS only.
+# author : A. Miletic
+ParCoLab 2017
+sr
+A	adjectif	OPEN
+Abr	abréviation	CLOSED
+Adv	adverbe	OPEN
+C_coord	conjonction coordonnée	CLOSED
+C_sub	conjonction subordonnée	CLOSED
+I	interjection	OPEN
+L	lettre	CLOSED
+N	nom	OPEN
+Num	numéral	OPEN
+P	pronom	CLOSED
+Part	particule	CLOSED
+Prep	préposition	CLOSED
+V_main	verbe principal	OPEN
+V_aux	verbe auxiliaire	CLOSED
+X	étranger	OPEN
+Z	ponctuation	PUNCTUATION

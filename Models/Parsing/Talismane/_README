@@ -1,0 +1,44 @@
+## A model for transition-based parsing of Serbian with the Talismane parser
+
+This folder contains a model for tagging Serbian developed using Assaf Urieli's transition-based parser Talismane (https://github.com/joliciel-informatique/talismane). Along with the model, it contains the language pack and the configuration file needed in order for the model to work.
+
+The model was trained on a 81K token sample of the ParCoTrain-Synt corpus (v0.1, https://github.com/aleksandra-miletic/serbian-nlp-resources/tree/master/ParCoTrain-Synt). Note that in order for the model to work, the corpus on which it is used has to be annotated using the same tagsets as the original corpus (see the associated annotation guidelines). 
+
+### CONTENT
+
+- sr_F_pos+cngptm-cutoff3.conf: configuration file that tells Talismane where to find all other files it needs in order to run
+- languagePack: package of files needed for Talismane to run
+
+In order for the model to launch properly, the languagePack and the configuration file need to be placed inside the folder with Talismane's distribution (at the same level as the .jar files).
+
+The model was developed with Talismane version 5.0.0 using the SVM algorithm. Based on optimisation experiments described in (Miletic, 2018), it was trained on POS tags and a reduced version of the ParCoTrain-Synt syntactic tagset, using morphosyntactic traits as atomic learning features. From our experience, it needs 10G to run an evaluation on a 8K token sample.
+
+
+### USAGE
+In order to evaluate the model, place yourself in the Talismane distribution folder and run the following command:
+
+$ java -Xmx15G -Dconfig.file=sr_F_pos+cngptm-cutoff3.conf -jar talismane-core-5.0.0.jar --sessionId=sr --evaluate --module=parser --inFile=evaluation-corpus.conll --outDir=eval-out/ --logConfigFile=examples/conf/logback.xml 
+
+This command supposes that there is an evaluation corpus named evaluation-corpus.conll and an output directory eval-out at the same level.
+
+
+### PERFORMANCE 
+In our experiments, this model achieved 87,54 LAS and 90,94 UAS on the test section of the ParCoTrain-Synt corpus (v0.1). The evaluation was done on gold standard POS annotation and with a beam width of 5. The non-projective relations were handled using Talismane's pseudo-projective module.
+
+
+### REFERENCING THE MODEL
+
+This model was developed as part of the following work:
+
+Miletic, Aleksandra (2018). Un treebank pour le serbe : constitution et exploitations. Thèse de doctorat. Université de Toulouse - Jean Jaurès, France.
+
+If you are using the model, please reference this work. 
+
+Details on the model and on the evaluation can be found in Chapter 9 of the thesis. For further details on using Talismane, please see the tool's page (https://github.com/joliciel-informatique/talismane).
+
+Contact: aleksandra.miletic (at) univ-tlse2.fr
+
+### ACKNOWLEDGMENTS
+
+The author would like to thank Assaf Urieli for his help with training and using Talismane. 
+

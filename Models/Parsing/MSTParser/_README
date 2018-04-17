@@ -1,0 +1,26 @@
+### MST Parser model for graph-based parsing of Serbian ###
+
+The model parcotrainsynt-80k-mstparser.model was developed using the MST Parser (https://github.com/travisbrown/mstparser). It was trained on a 80K portion of the ParCoTrain-Synt corpus of Serbian (https://github.com/aleksandra-miletic/serbian-nlp-resources/tree/master/ParCoTrain-Synt). The training was done on second-order features with non-projective decoding. Therefore, the parsing using this model should be done in same conditions.
+
+If you compiled your MST parser using Ant, you can launch the model as follows:
+
+$  java -classpath "./output/classes:lib/trove.jar" -Xmx15G mstparser.DependencyParser test test-file:corpus_to_parse.conll model-name:parcotrainsynt-80k-mstparser.model decode-type:non-proj order:2 output-file:parsing_output.conll
+
+Note that in order for the model to work, the corpus file needs to be annotated using the same morphosyntactic tags as in the trainging corpus on which the model was trained. For more details on this, see the ParCoTrain-Synt corpus and the associated annotation guides (in French). 
+
+### Performance
+In our experiments, this model achieved 86,62 LAS and 90,43 UAS on the test section of the ParCoTrain-Synt corpus (v0.1). Note that the evaluation was done using gold standard morphosyntactic annotation.
+
+### Author
+This model was created by Aleksandra Miletic (UMR 5263 CLLE, CNRS & Université Toulouse - Jean Jaurès, France).
+Contact : aleksandra.miletic (at) univ-tlse2.fr
+
+### Referencing the model
+This model was developed as part of the following work:
+
+Miletic, Aleksandra (2018). Un treebank pour le serbe : constitution et exploitations. Thèse de doctorat. Université de Toulouse - Jean Jaurès, France.
+
+If you are using the model, please reference this work. 
+
+Details on the training corpus and the model results can be found in Chapter 11 of the thesis. A documentation in English and Serbian will soon be made available. 
+

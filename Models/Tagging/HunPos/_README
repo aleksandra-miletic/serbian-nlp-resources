@@ -1,0 +1,37 @@
+## HunPos Model for tagging Serbian 
+
+The model parcotrainsynt_80k_hunpos.model is a POS-tagging model trained using the HunPos tagger (https://code.google.com/archive/p/hunpos/). HunPos is a trigram-based HMM tagger. The model distributed here was trained on a 80K token corpus of contemporary Serbian. Details below.
+
+### Training corpus
+
+80 405 tokens of the ParCoTrain-Synt corpus (v0.1). 
+2917 sentences
+711 tags
+
+The model was trained on the detailed morphosyntactic tags, which explains the high number of tags. 
+
+### Performance
+
+In our experiments, the model achieves an average accuracy of 85% on the full morphosyntactic tags.
+For more information on the tagset used, see the annotation guide of the corpus (https://github.com/aleksandra-miletic/serbian-nlp-resources/tree/master/ParCoTrain-Synt) (in French). 
+A documentatation in Serbian and English will soon be made available.
+
+### Usage
+
+In order to launch the model on a new Serbian text, do the following in the HunPos directory: 
+
+$ cat new_text.txt | ./hunpos-tag parcotrainsynt_80k_hunpos.model
+
+
+### Author
+
+This model was created by Aleksandra Miletic (UMR 5263 CLLE, University of Toulouse)
+Contact: aleksandra.miletic (at) univ.tlse2.fr
+
+### Referencing the model
+
+This model was created as part of the following work:
+
+Miletic, Aleksandra (2018). Un treebank pour le serbe : constitution et exploitations. Thèse de doctorat. Université de Toulouse - Jean Jaurès, France.
+
+Should you use the model in your own work, please use this reference.

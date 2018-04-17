@@ -1,0 +1,30 @@
+## CSTLemma model for the lemmatisation of Serbian
+
+This model was developed using the CSTLemma lemmatizer (https://github.com/kuhumcst/cstlemma). It was done using the procedure that calls on the *affixtrain* utility. The model was trained on a learning resource derived from the ParCoLex lexicon (https://github.com/aleksandra-miletic/serbian-nlp-resources/tree/master/Lexicons/ParCoLex). In the learning resource (also distributed here: parcolex_for_affixtrain.txt), there are 2,2M entries in the form "token - POS tag - lemma". The POS tags were simplified compare to the detailed morphosyntactic tags used in ParCoLex: they only contain the part of speech, and the gender for nouns.
+
+
+# CONTENT
+- cstlemma-serbian: folder containing lemmatization rules that constitute the model.
+- parcolex_for_affixtrain.txt: training resource used to develop the model
+- parcolex_cstlemma.dict: binary lexicon compiled from parcolex_for_affixtrain.txt using CSTLemma. May need to be recompiled depending on the platform on which the model is used (option -D; see section 1.1.4 in CSTLemma's documentation).
+
+# USAGE
+In order to use the model, run the following command from the CSTLemma's directory:
+
+$ ./cstlemma -f "cstlemma-serbian/parcolex_cstlemma_model" -i "corpus-to-lemmatize.txt" -d "parcolex_cstlemma.dict" -o "lemmatized-corpus.txt" -I '$w\t$t\n' -c '$w\t$b1[[$b?]~1$B]\t$t\t$i\n' -B '$w' -b '$w' -eU -t
+
+This command supposes all contents of this pack are placed in the CSTLemma directory. It reads from the input file corpus-to-lemmatize.txt and writes the lemmatized output in the file lemmatized-corpus.txt. The lemmatization uses the lexicon parcolex_cstlemma.dict. The other options define the input pattern (word[tab]tag\n) and the output options. For more details, see the tool's documentation (https://github.com/kuhumcst/cstlemma).
+
+# PERFORMANCE
+In our experiments, this model has achieved an accuracy of 96,5% on all words, and 80,9% on unknown words. The evaluation was done on a 20K token sample of the ParCoTrain-Synt corpus.
+
+
+# REFERENCING THE MODEL
+
+This model was created as part of the following work:
+
+Miletic, Aleksandra (2018). Un treebank pour le serbe : constitution et exploitations. Thèse de doctorat. Université de Toulouse - Jean Jaurès, France.
+
+If using the model, please reference this work.
+
+More details on the training process and on the model performances can be found in section 7.3 of the thesis. 
