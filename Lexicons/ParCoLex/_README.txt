@@ -11,7 +11,7 @@ Lemmas: 157 887
 Format: [inflected form][tab][lemma][morphosyntactic description][newline]
 
 
-### LICENCE
+### LICENSE
 
 The lexicon is distributed under the Creative Commons BY-SA 4.1 license. Please read the license carefully before using the lexicon.
 
